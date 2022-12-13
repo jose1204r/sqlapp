@@ -35,7 +35,7 @@ namespace Bestbuy
             Console.WriteLine("1. Create Product");
             Console.WriteLine("2. Update Product");
             Console.WriteLine("3. Delete Product");
-            Console.WriteLine("4. Department List");
+            Console.WriteLine("4. Product List");
 
             var userinput = int.Parse(Console.ReadLine());
             

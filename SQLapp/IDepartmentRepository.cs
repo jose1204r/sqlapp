@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SQLapp
+namespace Bestbuy
 {
     internal interface IDepartmentRepository
     {
         public interface IDepartmentRepository
         {
-            IEnumerable<Department> GetAllDepartments(); //Stubbed out method
+            IEnumerable<Department> GetAllDepartments();
+            void CreateDepartment(string Name);
         }
 
 

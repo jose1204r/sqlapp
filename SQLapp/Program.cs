@@ -7,6 +7,8 @@ using System.Security.Cryptography.X509Certificates;
 using static Bestbuy.IDepartmentRepository;
 using Org.BouncyCastle.Asn1.X509;
 using Microsoft.VisualBasic;
+using System.Diagnostics.Metrics;
+using System.Runtime.CompilerServices;
 
 namespace Bestbuy
 // Note: actual namespace depends on the project name.
@@ -27,46 +29,85 @@ namespace Bestbuy
         static void Main(string[] args)
         {
 
-            // User selections 
-            Console.WriteLine("********Best Buy Inventory********");
-            var tm = DateAndTime.Now.ToString();
-            Console.WriteLine(tm);
-            Console.WriteLine("Please Select :");
-            Console.WriteLine("1. Create Product");
-            Console.WriteLine("2. Update Product");
-            Console.WriteLine("3. Delete Product");
-            Console.WriteLine("4. Product List");
 
-            var userinput = int.Parse(Console.ReadLine());
-            
-            if (userinput == 1) 
+           
+            do // do while to repaet the program over 
             {
-               CreateAndListProducts();
+                // User selections with 5 options to select 
 
-            }
+                Console.WriteLine("********Best Buy Inventory********");
+                var tm = DateAndTime.Now.ToString();
+                Console.WriteLine(tm);
+                Console.WriteLine("Please Select :");
+                Console.WriteLine("1. Create Product");
+                Console.WriteLine("2. Update Product");
+                Console.WriteLine("3. Delete Product");
+                Console.WriteLine("4. Product List");
+                Console.WriteLine("5. Exit ");
 
-             
-            if (userinput == 2)
+
+
+                var userinput = int.Parse(Console.ReadLine());
+                Console.Clear();
+                Console.WriteLine("Please wait loadding!");
+
+
+                for (int i = 0; i < 6; i++) // loading 
+                {
+                    Console.Write(".");
+                    Thread.Sleep(1000);
+                }
+
+
+                if (userinput == 1) // if statement to validate the user input 
+                {
+                    Console.Clear();
+                    CreateAndListProducts();
+
+                }
+
+
+                if (userinput == 2)
+
+                {
+                    Console.Clear();
+                    UpdateProductName();
+
+                }
+
+
+
+                if (userinput == 3)
+
+                {
+                    Console.Clear();
+                    DeleteProduct();
+
+                }
+
+                if (userinput == 4)
+                {
+                    Console.Clear();
+                    ListProducts();
+                }
+
+                if (userinput == 5)
+
+                {
+                    Environment.Exit(0);
+                }
             
-            { 
-              UpdateProductName();
-            
-            }
+                else
+                {
 
+                    Console.WriteLine("please select a valid option from the Start Manu!");
 
+                }
 
-            if (userinput == 3) 
-            
-            {
-                DeleteProduct();
-            
-            }
+                
 
-            if (userinput == 4) 
-            {
-              
-               ListProducts();
-            }
+            } while (true);
+
             
         }
         public static void DeleteProduct()
